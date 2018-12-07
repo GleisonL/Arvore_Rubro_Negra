@@ -1,13 +1,13 @@
-package Controller;
+package ArvoreRN;
 
-import Model.No;
+
 
 public class Arvore<T extends Comparable> {
 
     public No raiz;
     public static No sentinela = new No();
 
-// ------------------------------------------------ MÉTODOS PUBLICOS ---------------------------------------------------
+    
     public int alturaNegra() {
         No r = this.raiz;
         int cont = 0;
@@ -112,7 +112,7 @@ public class Arvore<T extends Comparable> {
         }
     }
 
-// ------------------------------------------------ MÉTODOS PRIVADOS ---------------------------------------------------
+    
     private void rotacaoEsquerda(No x) {
         No y = x.getDireito();
         x.setDireito(y.getEsquerdo());
@@ -153,10 +153,7 @@ public class Arvore<T extends Comparable> {
         x.setPai(y);
     }
 
-   /**
-    * Método que auxilia na insercao
-    * @param z 
-    */
+   
     private void addFix(No z) {
         No y;
 
@@ -213,10 +210,7 @@ public class Arvore<T extends Comparable> {
         this.raiz.setCor(false);
     }
 
-    /**
-     * auxilia na remocao
-     * @param n 
-     */
+    
     private void delFix(No n) {
         No x;
         while ( !n.equals(this.raiz) && !n.getCor()) {
@@ -282,12 +276,7 @@ public class Arvore<T extends Comparable> {
         n.setCor(false);
     }
 
-   /**
-    * Realiza troca entre os nós, sendo necessária ao se remover um no
-    * para evitar perda de ponteiros
-    * @param u
-    * @param v 
-    */
+   
     private void transplant(No u, No v) {
         if (u.getPai().equals(sentinela)) {
             raiz = v;
@@ -299,10 +288,7 @@ public class Arvore<T extends Comparable> {
         v.setPai(u.getPai());
     }
 
-// ------------------------------------------------ MÉTODOS DE IMPRESSÃO -----------------------------------------------
-    /**
-     * Imprime em ordem
-     */
+
     public void imprimir() {
         imprimir(this.raiz);
         
